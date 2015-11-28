@@ -53,7 +53,8 @@ foreach($sampArray as $sRow) {
         else if(substr($data[1], 0, strlen('https://')) === 'https://'){
             $expected = str_replace('https://', '', $data[1]);
         }
-
+        echo "EXPECTEDDDDD: ".$expected;
+        echo "ACTUALLLLLLL: ".$actual;
         if(strcmp($actual, $expected)==0) {
             echo "SUCCESS\n";
             $successCtr++;
