@@ -60,7 +60,7 @@ foreach($sampArray as $sRow) {
         else {
             $sql = 'select * from nutch.webpage where baseUrl like \'%'.$expected.'%\'';
             $result = $link->query($sql);
-            if(!$result->num_rows > 0){
+            if($result->num_rows > 0){
                 echo "FAIL (logic problem)\n";
                 $ctr++;
             }
