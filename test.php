@@ -13,7 +13,7 @@ if (!$link) {
 }
 
 // make foo the current db
-$db_selected = mysqli_select_db($link, 'nutch_11162015');
+$db_selected = mysqli_select_db($link, 'nutch');
 if (!$db_selected) {
     die ('Can\'t use foo : ' . mysql_error());
 }
@@ -53,14 +53,12 @@ foreach($sampArray as $sRow) {
         else if(substr($data[1], 0, strlen('https://')) === 'https://'){
             $expected = str_replace('https://', '', $data[1]);
         }
-        echo "EXPECTEDDDDD: ".$expected;
-        echo "ACTUALLLLLLL: ".$actual;
         if(strcmp($actual, $expected)==0) {
             echo "SUCCESS\n";
             $successCtr++;
         }
         else {
-            $sql = 'select * from webpage where baseUrl like \'%'.$expected.'%\'';
+            $sql = 'select * from nutch.webpage where baseUrl like \'%'.$expected.'%\'';
             $result = $link->query($sql);
             if(!$result->num_rows > 0){
                 echo "FAIL (logic problem)\n";
