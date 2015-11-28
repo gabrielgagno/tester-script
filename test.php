@@ -23,8 +23,9 @@ $sampArray = ['business.csv', 'community.csv', 'shop.csv', 'tattoo.csv', 'www.cs
 $ch = curl_init();
 $successCtr = 0;
 $ctr = 0;
-//foreach($sampArray as $sRow) {
-    $file = fopen('shop.csv', 'r');
+foreach($sampArray as $sRow) {
+    echo "NOW OPERATING ON: ".$sRow;
+    $file = fopen($sRow, 'r');
     $data = fgetcsv($file);
     while(!feof($file)){
         $data = fgetcsv($file);
@@ -64,6 +65,6 @@ $ctr = 0;
         echo "...\n";
     }
     fclose($file);
-//}
+}
 
 echo "FINAL RESULTS: \n".($successCtr/$ctr)*100 ."%";
