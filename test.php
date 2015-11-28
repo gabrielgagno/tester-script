@@ -39,18 +39,27 @@ foreach($sampArray as $sRow) {
         $decodedResponse = json_decode($response);
         $urlRes = $decodedResponse->result[0]->_source->url;
         echo "SEARCH TERM: ".$data[0]."\n";
-        if(strcmp($urlRes, $data[1])==0) {
+
+        if(substr($urlRes, 0, strlen('http://')) === 'http://'){
+            $actual = str_replace('http://', '', $urlRes);
+        }
+        else if(substr($urlRes, 0, strlen('https://')) === 'https://'){
+            $actual = str_replace('https://', '', $urlRes);
+        }
+
+        if(substr($data[1], 0, strlen('http://')) === 'http://'){
+            $expected = str_replace('http://', '', $data[1]);
+        }
+        else if(substr($data[1], 0, strlen('https://')) === 'https://'){
+            $expected = str_replace('https://', '', $data[1]);
+        }
+
+        if(strcmp($actual, $expected)==0) {
             echo "SUCCESS\n";
             $successCtr++;
         }
         else {
-            if(substr($urlRes, 0, strlen('http://')) === 'http://'){
-                $string = str_replace('http://', '', $urlRes);
-            }
-            else if(substr($urlRes, 0, strlen('https://')) === 'https://'){
-                $string = str_replace('https://', '', $urlRes);
-            }
-            $sql = 'select * from webpage where baseUrl like \'%'.$data[1].'%\'';
+            $sql = 'select * from webpage where baseUrl like \'%'.$expected.'%\'';
             $result = $link->query($sql);
             if(!$result->num_rows > 0){
                 echo "FAIL (logic problem)\n";
