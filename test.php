@@ -39,6 +39,9 @@ foreach($sampArray as $sRow) {
         $decodedResponse = json_decode($response);
         $urlRes = $decodedResponse->result[0]->_source->url;
         echo "SEARCH TERM: ".$data[0]."\n";
+        if(!isset($data[0])) {
+            continue;
+        }
 
         if(substr($urlRes, 0, strlen('http://')) === 'http://'){
             $actual = str_replace('http://', '', $urlRes);
