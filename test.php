@@ -37,11 +37,11 @@ foreach($sampArray as $sRow) {
         ));
         $response = curl_exec($ch);
         $decodedResponse = json_decode($response);
-        $urlRes = $decodedResponse->result[0]->_source->url;
-        echo "SEARCH TERM: ".$data[0]."\n";
-        if(!isset($data[0])) {
+        if($decodedResponse->result[0]->_source->url){
             continue;
         }
+        $urlRes = $decodedResponse->result[0]->_source->url;
+        echo "SEARCH TERM: ".$data[0]."\n";
 
         if(substr($urlRes, 0, strlen('http://')) === 'http://'){
             $actual = str_replace('http://', '', $urlRes);
