@@ -37,7 +37,7 @@ foreach($sampArray as $sRow) {
         ));
         $response = curl_exec($ch);
         $decodedResponse = json_decode($response);
-        if(!$decodedResponse->result[0]->_source->url){
+        if(!isset($decodedResponse->result[0]->_source->url)){
             continue;
         }
         $urlRes = $decodedResponse->result[0]->_source->url;
