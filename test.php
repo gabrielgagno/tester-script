@@ -22,6 +22,7 @@ $sampArray = ['business.csv', 'community.csv', 'shop.csv', 'tattoo.csv', 'www.cs
 # curl the URL
 $ch = curl_init();
 $successCtr = 0;
+$notCrawledCounter = 0;
 $ctr = 0;
 foreach($sampArray as $sRow) {
     echo "NOW OPERATING ON: ".$sRow;
@@ -69,6 +70,7 @@ foreach($sampArray as $sRow) {
             }
             else{
                 echo "FAIL (not crawled)\n";
+                $notCrawledCounter++;
             }
         }
         echo "EXPECTED: $data[1]'\n";
@@ -78,4 +80,4 @@ foreach($sampArray as $sRow) {
     fclose($file);
 }
 
-echo "FINAL RESULTS: \n".($successCtr/$ctr)*100 ."%";
+echo "FINAL RESULTS: \n".($successCtr/$ctr)*100 ."% accuracy\nSITES NOT CRAWLED: ".$notCrawledCounter;
