@@ -26,10 +26,19 @@ $overAllCtr = 0;
 $goodEnoughCtr = 0;
 $logicProblem = 0;
 $topNArray = array(0,0,0,0,0);
+$subdomainCounters = array();
+foreach($subdomainCounters as $sdc) {
+    $sdc = array(0,0,0,0,0);
+}
+$subdomainTotals = array(0,0,0,0,0);
+$subdomainNotCrawled = array(0,0,0,0,0);
+$subdomainLogicProb = array(0,0,0,0,0);
+$subdomainOveralls = array(0,0,0,0,0);
 $notCrawledCounter = 0;
 $ctr = 0;
+$index = 0;
 foreach($sampArray as $sRow) {
-    echo "NOW OPERATING ON: ".$sRow;
+    echo "***\nNOW OPERATING ON: ".$sRow."\n";
     $file = fopen($sRow, 'r');
     $data = fgetcsv($file);
     while(!feof($file)){
@@ -78,7 +87,9 @@ foreach($sampArray as $sRow) {
                 else {
                     $goodEnoughCtr++;
                 }
+                $subdomainCounters[$index][$i];
                 $success = true;
+                $subdomainTotals[$index]++;
                 $ctr++;
                 break;
             }
@@ -89,11 +100,13 @@ foreach($sampArray as $sRow) {
             if($result->num_rows > 0){
                 echo "FAIL (logic problem)\n";
                 $logicProblem++;
+                $subdomainTotals[$index]++;
                 $ctr++;
             }
             else{
                 echo "FAIL (not crawled)\n";
                 $notCrawledCounter++;
+                $subdomainNotCrawled[$index];
             }
         }
         echo "EXPECTED TOP RESULT: $data[1]'\n";
@@ -102,8 +115,25 @@ foreach($sampArray as $sRow) {
         }
         echo "...\n";
         $overAllCtr++;
+        $subdomainOveralls[$index]++;
     }
     fclose($file);
+    $index++;
+}
+$temp = 0;
+foreach($sampArray as $sArray) {
+    echo "***\nFOR ".$sArray."\n";
+    echo "SAMPLE SIZE: ".$subdomainOveralls[$temp]."\n".
+    "ALL VALID SITES (CRAWLED SITES):".$subdomainTotals[$temp]."\n***\n".
+    "PERCENTAGE OF SUCCESS OVER CRAWLED SITES: ".(($subdomainCounters[$temp][0]/$subdomainTotals[$temp])*100)."%\n".
+    "PERCENTAGE OF SUCCESS INCLUDING INVALID SITES".(($subdomainCounters[$temp][0]/$subdomainOveralls[$temp])*100)."%\n***\n".
+    "PERCENTAGE OF GOOD OVER CRAWLED SITES: ".((($subdomainCounters[$temp][1]+$subdomainCounters[$temp][2]+$subdomainCounters[$temp][3]+$subdomainCounters[$temp][4])/$subdomainTotals)*100)."%\n".
+    "PERCENTAGE OF GOOD INCLUDING INVALID SITES".((($subdomainCounters[$temp][1]+$subdomainCounters[$temp][2]+$subdomainCounters[$temp][3]+$subdomainCounters[$temp][4])/$subdomainOveralls)*100)."%\n***\n".
+    "SITES NOT CRAWLED: ".$subdomainNotCrawled[$temp]."(".(($subdomainNotCrawled[$temp]/$subdomainOveralls[$temp])*100)."%)\n".
+    "SITES WITH LOGIC PROBLEMS:".$subdomainLogicProb[$temp]."(".(($subdomainLogicProb[$temp]/$subdomainOveralls[$temp])*100)."%)\n".
+    "-percentage overall".(($subdomainLogicProb[$temp]/$subdomainOveralls[$temp])*100)."%\n".
+    "-percentage over valid sites".(($subdomainLogicProb[$temp]/$subdomainTotals[$temp])*100)."%\n";
+    $temp++;
 }
 
 echo "FINAL RESULTS:\n".
