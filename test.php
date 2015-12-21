@@ -87,7 +87,7 @@ foreach($sampArray as $sRow) {
             }
         }
         echo "EXPECTED TOP RESULT: $data[1]'\n";
-        if(!isset($decodedResponse->result[0]->_source->url)) {
+        if(isset($decodedResponse->result[0]->_source->url)) {
             echo "ACTUAL:" . $decodedResponse->result[0]->_source->url . "'\n";
         }
         echo "...\n";
