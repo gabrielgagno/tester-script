@@ -60,6 +60,7 @@ foreach($sampArray as $sRow) {
         if(strcmp($actual, $expected)==0) {
             echo "SUCCESS\n";
             $successCtr++;
+            $ctr++;
         }
         else {
             $sql = 'select * from nutch.webpage where baseUrl like \'%'.$expected.'%\'';
