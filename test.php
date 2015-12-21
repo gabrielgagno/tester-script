@@ -81,11 +81,11 @@ foreach($sampArray as $sRow) {
                 if($i==0) {
                     echo "TOP\n";
                     $successCtr++;
-                    $subdomainBests[$i]++;
+                    $subdomainBests[$index]++;
                 }
                 else {
                     $goodEnoughCtr++;
-                    $subdomainCounters++;
+                    $subdomainCounters[$index]++;
                 }
                 $success = true;
                 $subdomainTotals[$index]++;
@@ -105,7 +105,7 @@ foreach($sampArray as $sRow) {
             else{
                 echo "FAIL (not crawled)\n";
                 $notCrawledCounter++;
-                $subdomainNotCrawled[$index];
+                $subdomainNotCrawled[$index]++;
             }
         }
         echo "EXPECTED TOP RESULT: $data[1]'\n";
