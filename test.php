@@ -87,7 +87,7 @@ foreach($sampArray as $sRow) {
             }
         }
         echo "EXPECTED TOP RESULT: $data[1]'\n";
-        echo "ACTUAL: $urlRes'\n";
+        echo "ACTUAL:".$decodedResponse->result[0]->_source->url."'\n";
         echo "...\n";
 
         /*if(!isset($decodedResponse->result[0]->_source->url)){
@@ -138,5 +138,5 @@ echo "FINAL RESULTS:\n".
     "SITES NOT CRAWLED: ".$notCrawledCounter.
     "\nITEMS FOUND WITHIN THE TOP 5\n";
 for($i=0;$i<5;$i++) {
-    echo "TOP ".($i+1).": ".$topNArray[$i];
+    echo "TOP ".($i+1).": ".$topNArray[$i]."\n";
 }
