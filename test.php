@@ -22,6 +22,7 @@ $sampArray = ['business.csv', 'community.csv', 'shop.csv', 'tattoo.csv', 'www.cs
 # curl the URL
 $ch = curl_init();
 $successCtr = 0;
+$logicProblem = 0;
 $topNArray = array(0,0,0,0,0);
 $notCrawledCounter = 0;
 $ctr = 0;
@@ -79,6 +80,7 @@ foreach($sampArray as $sRow) {
             $result = $link->query($sql);
             if($result->num_rows > 0){
                 echo "FAIL (logic problem)\n";
+                $logicProblem++;
                 $ctr++;
             }
             else{
@@ -137,7 +139,8 @@ foreach($sampArray as $sRow) {
 
 echo "FINAL RESULTS:\n".
     ($successCtr/$ctr)*100 ."% accuracy (first-on-the-list hits)\n".
-    "SITES NOT CRAWLED: ".$notCrawledCounter.
+    "SITES NOT CRAWLED: ".$notCrawledCounter."\n".
+    "SITES WITH LOGIC PROBLEMS:".$logicProblem."\n".
     "\nITEMS FOUND WITHIN THE TOP 5\n";
 for($i=0;$i<5;$i++) {
     echo "TOP ".($i+1).": ".$topNArray[$i]."\n";
