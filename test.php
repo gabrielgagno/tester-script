@@ -133,4 +133,10 @@ foreach($sampArray as $sRow) {
     fclose($file);
 }
 
-echo "FINAL RESULTS: \n".($successCtr/$ctr)*100 ."% accuracy\nSITES NOT CRAWLED: ".$notCrawledCounter;
+echo "FINAL RESULTS:\n".
+    ($successCtr/$ctr)*100 ."% accuracy (first-on-the-list hits)\n".
+    "SITES NOT CRAWLED: ".$notCrawledCounter.
+    "\nITEMS FOUND WITHIN THE TOP 5\n";
+for($i=0;$i<5;$i++) {
+    echo "TOP ".($i+1).": ".$topNArray[$i];
+}

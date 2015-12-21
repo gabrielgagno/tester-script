@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/test.php" line="135" />
     <bookmark url="file://$PROJECT_DIR$/shop.csv" />
   </component>
   <component name="ChangeListManager">
@@ -32,12 +31,12 @@
       <file leaf-file-name="test.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60625">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.71875">
+              <caret line="138" column="38" selection-start-line="138" selection-start-column="38" selection-end-line="138" selection-end-column="38" />
               <folding>
                 <element signature="e#6#94#0#PHP" expanded="true" />
-                <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-                <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+                <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+                <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
               </folding>
             </state>
           </provider>
@@ -336,7 +335,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450683112096</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="final changes to tester">
+      <created>1450683177727</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1450683177727</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -430,8 +435,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -497,8 +502,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -564,8 +569,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -631,8 +636,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -698,8 +703,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -765,8 +770,8 @@
           <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -832,8 +837,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -866,8 +871,8 @@
           <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
@@ -948,12 +953,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60625">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.71875">
+          <caret line="138" column="38" selection-start-line="138" selection-start-column="38" selection-end-line="138" selection-end-column="38" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1450683171326" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
-            <marker date="1450683171326" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="2371:2437" placeholder="select * fro..webpage..." />
+            <marker date="1450683986946" expanded="true" signature="3768:3834" placeholder="select * fro..webpage..." />
           </folding>
         </state>
       </provider>
