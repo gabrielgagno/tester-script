@@ -26,10 +26,8 @@ $overAllCtr = 0;
 $goodEnoughCtr = 0;
 $logicProblem = 0;
 $topNArray = array(0,0,0,0,0);
-$subdomainCounters = array();
-foreach($subdomainCounters as $sdc) {
-    $sdc = array(0,0,0,0,0);
-}
+$subdomainCounters = array(0,0,0,0,0);
+$subdomainBests = array(0,0,0,0,0);
 $subdomainTotals = array(0,0,0,0,0);
 $subdomainNotCrawled = array(0,0,0,0,0);
 $subdomainLogicProb = array(0,0,0,0,0);
@@ -83,11 +81,12 @@ foreach($sampArray as $sRow) {
                 if($i==0) {
                     echo "TOP\n";
                     $successCtr++;
+                    $subdomainBests[$i]++;
                 }
                 else {
                     $goodEnoughCtr++;
+                    $subdomainCounters++;
                 }
-                $subdomainCounters[$index][$i];
                 $success = true;
                 $subdomainTotals[$index]++;
                 $ctr++;
@@ -125,10 +124,10 @@ foreach($sampArray as $sArray) {
     echo "***\nFOR ".$sArray."\n";
     echo "SAMPLE SIZE: ".$subdomainOveralls[$temp]."\n".
     "ALL VALID SITES (CRAWLED SITES):".$subdomainTotals[$temp]."\n***\n".
-    "PERCENTAGE OF SUCCESS OVER CRAWLED SITES: ".(($subdomainCounters[$temp][0]/$subdomainTotals[$temp])*100)."%\n".
-    "PERCENTAGE OF SUCCESS INCLUDING INVALID SITES".(($subdomainCounters[$temp][0]/$subdomainOveralls[$temp])*100)."%\n***\n".
-    "PERCENTAGE OF GOOD OVER CRAWLED SITES: ".((($subdomainCounters[$temp][1]+$subdomainCounters[$temp][2]+$subdomainCounters[$temp][3]+$subdomainCounters[$temp][4])/$subdomainTotals)*100)."%\n".
-    "PERCENTAGE OF GOOD INCLUDING INVALID SITES".((($subdomainCounters[$temp][1]+$subdomainCounters[$temp][2]+$subdomainCounters[$temp][3]+$subdomainCounters[$temp][4])/$subdomainOveralls)*100)."%\n***\n".
+    "PERCENTAGE OF SUCCESS OVER CRAWLED SITES: ".(($subdomainBests[$temp]/$subdomainTotals[$temp])*100)."%\n".
+    "PERCENTAGE OF SUCCESS INCLUDING INVALID SITES".(($subdomainBests[$temp]/$subdomainOveralls[$temp])*100)."%\n***\n".
+    "PERCENTAGE OF GOOD OVER CRAWLED SITES: ".(($subdomainCounters[$temp]/$subdomainTotals[$temp])*100)."%\n".
+    "PERCENTAGE OF GOOD INCLUDING INVALID SITES".(($subdomainCounters[$temp]/$subdomainOveralls[$temp])*100)."%\n***\n".
     "SITES NOT CRAWLED: ".$subdomainNotCrawled[$temp]."(".(($subdomainNotCrawled[$temp]/$subdomainOveralls[$temp])*100)."%)\n".
     "SITES WITH LOGIC PROBLEMS:".$subdomainLogicProb[$temp]."(".(($subdomainLogicProb[$temp]/$subdomainOveralls[$temp])*100)."%)\n".
     "-percentage overall".(($subdomainLogicProb[$temp]/$subdomainOveralls[$temp])*100)."%\n".
