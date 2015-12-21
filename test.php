@@ -22,6 +22,7 @@ $sampArray = ['business.csv', 'community.csv', 'shop.csv', 'tattoo.csv', 'www.cs
 # curl the URL
 $ch = curl_init();
 $successCtr = 0;
+$overAllCtr = 0;
 $logicProblem = 0;
 $topNArray = array(0,0,0,0,0);
 $notCrawledCounter = 0;
@@ -45,6 +46,7 @@ foreach($sampArray as $sRow) {
         $expected = null;
         echo "SEARCH TERM: ".$data[0]."\n";
         for($i=0;$i<5;$i++) {
+            echo "TIMES";
             $success = false;
             if(!isset($decodedResponse->result[$i]->_source->url)){
                 continue;
@@ -93,54 +95,20 @@ foreach($sampArray as $sRow) {
             echo "ACTUAL:" . $decodedResponse->result[0]->_source->url . "'\n";
         }
         echo "...\n";
-
-        /*if(!isset($decodedResponse->result[0]->_source->url)){
-            continue;
-        }
-        $urlRes = $decodedResponse->result[0]->_source->url;
-        echo "SEARCH TERM: ".$data[0]."\n";
-
-        if(substr($urlRes, 0, strlen('http://')) === 'http://'){
-            $actual = str_replace('http://', '', $urlRes);
-        }
-        else if(substr($urlRes, 0, strlen('https://')) === 'https://'){
-            $actual = str_replace('https://', '', $urlRes);
-        }
-
-        if(substr($data[1], 0, strlen('http://')) === 'http://'){
-            $expected = str_replace('http://', '', $data[1]);
-        }
-        else if(substr($data[1], 0, strlen('https://')) === 'https://'){
-            $expected = str_replace('https://', '', $data[1]);
-        }
-        if(strcmp($actual, $expected)==0) {
-            echo "SUCCESS\n";
-            $successCtr++;
-            $ctr++;
-        }
-        else {
-            $sql = 'select * from nutch.webpage where baseUrl like \'%'.$expected.'%\'';
-            $result = $link->query($sql);
-            if($result->num_rows > 0){
-                echo "FAIL (logic problem)\n";
-                $ctr++;
-            }
-            else{
-                echo "FAIL (not crawled)\n";
-                $notCrawledCounter++;
-            }
-        }
-        echo "EXPECTED: $data[1]'\n";
-        echo "ACTUAL: $urlRes'\n";
-        echo "...\n";*/
+        $overAllCtr++;
     }
     fclose($file);
 }
 
 echo "FINAL RESULTS:\n".
-    ($successCtr/$ctr)*100 ."% accuracy (first-on-the-list hits)\n".
-    "SITES NOT CRAWLED: ".$notCrawledCounter."\n".
-    "SITES WITH LOGIC PROBLEMS:".$logicProblem."\n".
+    "SAMPLE SIZE: ".$overAllCtr."\n".
+    "ALL VALID SITES (CRAWLED SITES):".$ctr."\n".
+    "ACCURACY OVER CRAWLED SITES: ".(($successCtr/$ctr)*100)."%\n".
+    "ACCURACY INCLUDING INVALID SITES".(($successCtr/$overAllCtr)*100)."%\n".
+    "SITES NOT CRAWLED: ".$notCrawledCounter."(".$notCrawledCounter/$overAllCtr.")\n".
+    "SITES WITH LOGIC PROBLEMS:".$logicProblem."(".$logicProblem/$overAllCtr.")\n".
+    "-percentage overall".($logicProblem/$overAllCtr)."%\n".
+    "-percentage over valid sites".($logicProblem/$ctr)."%\n".
     "\nITEMS FOUND WITHIN THE TOP 5\n";
 for($i=0;$i<5;$i++) {
     echo "TOP ".($i+1).": ".$topNArray[$i]."\n";
