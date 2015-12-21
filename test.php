@@ -42,6 +42,7 @@ foreach($sampArray as $sRow) {
         $success = false;
         $actual = null;
         $expected = null;
+        echo "SEARCH TERM: ".$data[0]."\n";
         for($i=0;$i<5;$i++) {
             $success = false;
             if(!isset($decodedResponse->result[$i]->_source->url)){
@@ -49,7 +50,6 @@ foreach($sampArray as $sRow) {
             }
 
             $urlRes = $decodedResponse->result[$i]->_source->url;
-            echo "SEARCH TERM: ".$data[0]."\n";
 
             if(substr($urlRes, 0, strlen('http://')) === 'http://'){
                 $actual = str_replace('http://', '', $urlRes);
