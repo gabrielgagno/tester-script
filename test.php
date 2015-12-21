@@ -23,6 +23,7 @@ $sampArray = ['business.csv', 'community.csv', 'shop.csv', 'tattoo.csv', 'www.cs
 $ch = curl_init();
 $successCtr = 0;
 $overAllCtr = 0;
+$goodEnoughCtr = 0;
 $logicProblem = 0;
 $topNArray = array(0,0,0,0,0);
 $notCrawledCounter = 0;
@@ -46,7 +47,6 @@ foreach($sampArray as $sRow) {
         $expected = null;
         echo "SEARCH TERM: ".$data[0]."\n";
         for($i=0;$i<5;$i++) {
-            echo "TIMES";
             $success = false;
             if(!isset($decodedResponse->result[$i]->_source->url)){
                 continue;
@@ -71,7 +71,13 @@ foreach($sampArray as $sRow) {
             if(strcmp($actual, $expected)==0) {
                 echo "SUCCESS! RANK: ".($i+1)."\n";
                 $topNArray[$i]++;
-                $successCtr++;
+                if($i==0) {
+                    echo "TOP\n";
+                    $successCtr++;
+                }
+                else {
+                    $goodEnoughCtr++;
+                }
                 $success = true;
                 $ctr++;
                 break;
@@ -102,13 +108,15 @@ foreach($sampArray as $sRow) {
 
 echo "FINAL RESULTS:\n".
     "SAMPLE SIZE: ".$overAllCtr."\n".
-    "ALL VALID SITES (CRAWLED SITES):".$ctr."\n".
-    "ACCURACY OVER CRAWLED SITES: ".(($successCtr/$ctr)*100)."%\n".
-    "ACCURACY INCLUDING INVALID SITES".(($successCtr/$overAllCtr)*100)."%\n".
-    "SITES NOT CRAWLED: ".$notCrawledCounter."(".$notCrawledCounter/$overAllCtr.")\n".
-    "SITES WITH LOGIC PROBLEMS:".$logicProblem."(".$logicProblem/$overAllCtr.")\n".
-    "-percentage overall".($logicProblem/$overAllCtr)."%\n".
-    "-percentage over valid sites".($logicProblem/$ctr)."%\n".
+    "ALL VALID SITES (CRAWLED SITES):".$ctr."\n***\n".
+    "PERCENTAGE OF SUCCESS OVER CRAWLED SITES: ".(($successCtr/$ctr)*100)."%\n".
+    "PERCENTAGE OF SUCCESS INCLUDING INVALID SITES".(($successCtr/$overAllCtr)*100)."%\n***\n".
+    "PERCENTAGE OF GOOD OVER CRAWLED SITES: ".(($goodEnoughCtr/$ctr)*100)."%\n".
+    "PERCENTAGE OF GOOD INCLUDING INVALID SITES".(($goodEnoughCtr/$overAllCtr)*100)."%\n***\n".
+    "SITES NOT CRAWLED: ".$notCrawledCounter."(".(($notCrawledCounter/$overAllCtr)*100)."%)\n".
+    "SITES WITH LOGIC PROBLEMS:".$logicProblem."(".(($logicProblem/$overAllCtr)*100)."%)\n".
+    "-percentage overall".(($logicProblem/$overAllCtr)*100)."%\n".
+    "-percentage over valid sites".(($logicProblem/$ctr)*100)."%\n".
     "\nITEMS FOUND WITHIN THE TOP 5\n";
 for($i=0;$i<5;$i++) {
     echo "TOP ".($i+1).": ".$topNArray[$i]."\n";
